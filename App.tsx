@@ -1,5 +1,7 @@
-import React from 'react';
-import AppLoading from 'expo-app-loading';
+import 'react-native-gesture-handler';
+
+import React, { useEffect } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
 import { ThemeProvider } from 'styled-components';
 
 import {
@@ -7,14 +9,18 @@ import {
   Inter_400Regular,
   Inter_500Medium
 } from '@expo-google-fonts/inter';
+
 import {
   Archivo_400Regular,
   Archivo_500Medium,
   Archivo_600SemiBold
 } from '@expo-google-fonts/archivo';
 
-import { Home } from './src/screens/Home';
+import { Routes } from './src/routes';
+
 import theme from './src/styles/theme';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,13 +31,29 @@ export default function App() {
     Archivo_600SemiBold
   });
 
+  useEffect(() => {
+    const showSplashScreen = async () => {
+      await SplashScreen.preventAutoHideAsync();
+    }
+
+    showSplashScreen();
+  });
+
+  useEffect(() => {
+    const hideSplashScreen = async () => {
+      await SplashScreen.hideAsync();
+    }
+
+    if (fontsLoaded) hideSplashScreen();
+  }, [fontsLoaded]);
+
   if (!fontsLoaded) {
-    return <AppLoading />
+    return null;
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <Home />
+      <Routes />
     </ThemeProvider>
   );
 }
