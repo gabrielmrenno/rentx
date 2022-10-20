@@ -1,9 +1,7 @@
 import { CarDTO } from "../../dtos/CarDTO";
-import {
-    MarkedDateProps
-} from '../../components/Calendar';
 
 export type RootStackParamList = {
+    Splash: undefined,
     Home: undefined,
     CarDetails: { car: CarDTO },
     Scheduling: { car: CarDTO },
