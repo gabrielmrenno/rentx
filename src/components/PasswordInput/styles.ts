@@ -9,6 +9,8 @@ interface Props {
 
 export const Container = styled.View`
     flex-direction: row;
+
+    margin-bottom: ${RFValue(8)}px
 `;
 
 export const IconContainer = styled.View<Props>`

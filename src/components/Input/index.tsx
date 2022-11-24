@@ -47,6 +47,7 @@ export function Input({
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
                 isFocused={isFocused}
+                placeholderTextColor={theme.colors.text_detail}
                 {...rest}
             />
         </Container>

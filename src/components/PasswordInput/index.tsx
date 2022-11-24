@@ -54,6 +54,7 @@ export function PasswordInput({
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
                 isFocused={isFocused}
+                placeholderTextColor={theme.colors.text_detail}
                 {...rest}
             />
             <BorderlessButton onPress={handlePasswordVisibilityChange}>

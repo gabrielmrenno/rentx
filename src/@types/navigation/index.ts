@@ -5,11 +5,17 @@ export type RootStackParamList = {
     Home: undefined,
     CarDetails: { car: CarDTO },
     Scheduling: { car: CarDTO },
-    SchedulingComplete: undefined,
+    Confirmation: {
+        title: string;
+        message: string;
+        // keyof takes an object type and produces a string
+        nextScreenRoute: keyof RootStackParamList;
+    },
     SchedulingDetails: { car: CarDTO, dates: string[] },
     MyCars: undefined,
-    SingIn: undefined,
-    SingUpFirstStep: undefined,
+    SignIn: undefined,
+    SignUpFirstStep: undefined,
+    SignUpSecondStep: { user: Object },
 }
 
 declare global {
