@@ -8,6 +8,8 @@ export type RootStackParamList = {
     SchedulingComplete: undefined,
     SchedulingDetails: { car: CarDTO, dates: string[] },
     MyCars: undefined,
+    SingIn: undefined,
+    SingUpFirstStep: undefined,
 }
 
 declare global {

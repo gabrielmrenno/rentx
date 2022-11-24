@@ -10,7 +10,6 @@ import {
 interface Props extends RectButtonProps {
     title: string;
     color?: string;
-    enabled?: boolean;
     loading?: boolean;
     light?: boolean
 }
