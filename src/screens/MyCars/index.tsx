@@ -8,7 +8,7 @@ import api from '../../services/api';
 import { Car } from '../../components/Car';
 import { BackButton } from '../../components/BackButton';
 import { LoadAnimation } from '../../components/LoadAnimation';
-import { CarDTO } from '../../dtos/CarDTO';
+import { CarModel } from '../../models/CarModel';
 import {
     Container,
     Header,
@@ -28,7 +28,7 @@ import {
 interface CarProps {
     id: string;
     user_id: string;
-    car: CarDTO;
+    car: CarModel;
     startDate: string;
     endDate: string;
 }

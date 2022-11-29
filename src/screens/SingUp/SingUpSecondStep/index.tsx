@@ -8,12 +8,15 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
 
+import api from '../../../services/api';
+
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
 import { PasswordInput } from '../../../components/PasswordInput';
 import { Button } from '../../../components/Button';
 
 import { Confirmation } from '../../Confirmation';
+import { User } from '../../../models/UserModel';
 
 import {
     Container,
@@ -24,6 +27,8 @@ import {
     Form,
     FormTitle,
 } from './styles';
+
+
 
 // to retrieve user data, we need to type
 interface Params {
@@ -49,7 +54,7 @@ export function SingUpSecondStep() {
         navigation.goBack();
     }
 
-    function handleRegister() {
+    async function handleRegister() {
         //verify if inputs has data
         if (!Boolean(password) || !Boolean(passwordConfirm)) {
             return Alert.alert('Informe a senha e a sua confirmação.');
@@ -60,12 +65,29 @@ export function SingUpSecondStep() {
             return Alert.alert('As senhas devem ser iguais.');
         }
 
-        // To send to api to register and call success screen
-        navigation.navigate('Confirmation', {
-            title: 'Conta criada',
-            message: `Agora é só fazer o login\ne aproveitar`,
-            nextScreenRoute: 'SignIn'
-        });
+        // To save new user in API
+        await api.post<User>('/users', {
+            name: user.name,
+            email: user.email,
+            password,
+            driver_license: user.driverLicense
+        })
+            .then(() => {
+                // if everything is good and there is no error:
+
+                // To send to api to register and call success screen
+                navigation.navigate('Confirmation', {
+                    title: 'Conta criada',
+                    message: `Agora é só fazer o login\ne aproveitar`,
+                    nextScreenRoute: 'SignIn'
+                });
+            })
+            .catch((error) => {
+                // if there is an error
+                Alert.alert('Opa', 'Não foi possível cadastrar.');
+            });
+
+
     }
 
     return (

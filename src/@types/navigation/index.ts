@@ -1,17 +1,17 @@
-import { CarDTO } from "../../dtos/CarDTO";
+import { CarModel } from "../../models/CarModel";
 
 export type RootStackParamList = {
     Splash: undefined,
     Home: undefined,
-    CarDetails: { car: CarDTO },
-    Scheduling: { car: CarDTO },
+    CarDetails: { car: CarModel },
+    Scheduling: { car: CarModel },
     Confirmation: {
         title: string;
         message: string;
         // keyof takes an object type and produces a string
         nextScreenRoute: keyof RootStackParamList;
     },
-    SchedulingDetails: { car: CarDTO, dates: string[] },
+    SchedulingDetails: { car: CarModel, dates: string[] },
     MyCars: undefined,
     SignIn: undefined,
     SignUpFirstStep: undefined,

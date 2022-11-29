@@ -13,7 +13,7 @@ import { ImageSlider } from '../../components/ImageSlider';
 import { Accessory } from '../../components/Accessory';
 import { Button } from '../../components/Button';
 
-import { CarDTO } from '../../dtos/CarDTO';
+import { CarModel } from '../../models/CarModel';
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 import { getPlatformDate } from '../../utils/getPlatformDate';
 
@@ -46,7 +46,7 @@ import {
 
 
 interface Params {
-    car: CarDTO,
+    car: CarModel,
     dates: string[];
 }
 
@@ -64,7 +64,7 @@ export function SchedulingDetails() {
 
     const navigation = useNavigation();
 
-    const rentTotal = Number(dates.length * car.rent.price);
+    const rentTotal = Number(dates.length * car.price);
 
     async function handleConfirmScheduling() {
         setLoading(true);
@@ -116,7 +116,7 @@ export function SchedulingDetails() {
             </Header>
 
             <CarImages>
-                <ImageSlider imagesUrl={car.photos} />
+                <ImageSlider images={car.photos} />
             </CarImages>
 
             <Content>
@@ -127,8 +127,8 @@ export function SchedulingDetails() {
                     </Description>
 
                     <Rent>
-                        <Period>{car.rent.period}</Period>
-                        <Price>R$ {car.rent.price}</Price>
+                        <Period>{car.period}</Period>
+                        <Price>R$ {car.price}</Price>
                     </Rent>
                 </Details>
 
@@ -173,7 +173,7 @@ export function SchedulingDetails() {
                 <RentalPrice>
                     <RentalPriceLabel>TOTAL</RentalPriceLabel>
                     <RentalPriceDetails>
-                        <RentalPriceQuota>{`R$ ${car.rent.price} x ${dates.length} diárias`}</RentalPriceQuota>
+                        <RentalPriceQuota>{`R$ ${car.price} x ${dates.length} diárias`}</RentalPriceQuota>
                         <RentalPriceTotal>R$ {rentTotal}</RentalPriceTotal>
                     </RentalPriceDetails>
                 </RentalPrice>

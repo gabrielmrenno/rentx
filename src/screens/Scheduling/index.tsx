@@ -10,7 +10,7 @@ import {
     MarkedDateProps
 } from '../../components/Calendar';
 
-import { CarDTO } from '../../dtos/CarDTO';
+import { CarModel } from '../../models/CarModel';
 import { BackButton } from '../../components/BackButton';
 import { Button } from '../../components/Button';
 import { getPlatformDate } from '../../utils/getPlatformDate';
@@ -38,7 +38,7 @@ interface RentalPeriod {
 }
 
 interface Params {
-    car: CarDTO;
+    car: CarModel;
 }
 
 export function Scheduling() {

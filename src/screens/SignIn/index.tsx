@@ -10,6 +10,8 @@ import {
 import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 
+import { useAuth } from '../../hooks/auth';
+
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { PasswordInput } from '../../components/PasswordInput';
@@ -28,8 +30,8 @@ export function SignIn() {
     const [password, setPassword] = useState('');
 
     const navigation = useNavigation();
-
     const theme = useTheme();
+    const { singIn } = useAuth();
 
     async function handleSingIn() {
         // if the validation is not valid, Yup throw an error
@@ -47,8 +49,10 @@ export function SignIn() {
             // the Yup validation can take a while
             // pass the input state to validate
             await schema.validate({ email, password })
+            Alert.alert('Tudo certo');
 
-            // TODO: Login
+            // signIn
+            singIn({ email, password });
         } catch (error) {
             // 2 error kinds: Yup validation or general error
             // taking the Yup error
@@ -66,7 +70,7 @@ export function SignIn() {
     }
 
     function handleNewAccount() {
-        navigation.navigate('SingUpFirstStep');
+        navigation.navigate('SignUpFirstStep');
     }
 
     return (

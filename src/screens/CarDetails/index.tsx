@@ -11,7 +11,7 @@ import Animated, {
     Extrapolate
 } from 'react-native-reanimated';
 
-import { CarDTO } from '../../dtos/CarDTO';
+import { CarModel } from '../../models/CarModel';
 
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
@@ -40,7 +40,7 @@ import {
 
 
 interface Params {
-    car: CarDTO;
+    car: CarModel;
 }
 
 export function CarDetails() {
@@ -103,7 +103,7 @@ export function CarDetails() {
 
                 <CarImages>
                     <Animated.View style={[sliderCarStyleAnimation]}>
-                        <ImageSlider imagesUrl={car.photos} />
+                        <ImageSlider images={car.photos} />
                     </Animated.View>
                 </CarImages>
 
@@ -126,8 +126,8 @@ export function CarDetails() {
                     </Description>
 
                     <Rent>
-                        <Period>{car.rent.period}</Period>
-                        <Price>R$ {car.rent.price}</Price>
+                        <Period>{car.period}</Period>
+                        <Price>R$ {car.price}</Price>
                     </Rent>
                 </Details>
 

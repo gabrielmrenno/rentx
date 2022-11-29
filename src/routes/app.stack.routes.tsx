@@ -15,15 +15,14 @@ import { SingUpSecondStep } from '../screens/SingUp/SingUpSecondStep';
 
 const { Navigator, Screen } = createStackNavigator();
 
-export function StackRoutes() {
+export function AppStackRoutes() {
     return (
-        <Navigator screenOptions={{ headerShown: false }} initialRouteName="SignIn">
-            {/* <Screen name="Splash" component={Splash} /> */}
+        <Navigator screenOptions={{ headerShown: false }} initialRouteName="FirstPage">
             <Screen name="SignIn" component={SignIn} />
             <Screen name="SingUpFirstStep" component={SingUpFirstStep} />
             <Screen name="SingUpSecondStep" component={SingUpSecondStep} />
             <Screen
-                name="Home"
+                name="FirstPage"
                 component={Home}
                 options={{
                     gestureEnabled: false,

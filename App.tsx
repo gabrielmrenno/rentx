@@ -17,6 +17,7 @@ import {
 import { Routes } from './src/routes';
 
 import theme from './src/styles/theme';
+import { AppProvider } from './src/hooks';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -51,7 +52,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Routes />
+      <AppProvider>
+        <Routes />
+      </AppProvider>
     </ThemeProvider>
   );
 }
